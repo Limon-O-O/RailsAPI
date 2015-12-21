@@ -1,29 +1,22 @@
 class Api::V1::UsersController < Api::V1::BaseController
 
-  def show
+  before_action :authenticate_user!, only: [:update]
+
+  def update
     @user = User.find(params[:id])
-    User.all.each {|user|
-      user.password_digest = '123123'
-      user.reset_auth_token!
-    }
+
+    # return api_error(status: 403) if !UserPolicy.new(current_user, @user).update?
+    authorize @user, :update? # pundit 提供了更简便的 authorize
+
+    @user.update_attributes(update_params)
+
     render json: @user
   end
 
-  def create
-    users = User.create([
-                   {
-                     email: 'test-user-00@mail.com',
-                     name: 'test-user-00',
-                     activated: DateTime.now,
-                     admin: false
-                   },
-                   {
-                     email: 'test-user-01@mail.com',
-                     name: 'test-user-01',
-                     activated: DateTime.now,
-                     admin: false
-                   }
-                  ])
-  end
+  private
+
+    def update_params
+      params.require(:user).permit(:name)
+    end
 
 end
