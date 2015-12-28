@@ -1,3 +1,7 @@
+
+# 0.10.0 and newer requires ActiveModel::Serializer::ArraySerializer
+# older versions require ActiveModel::ArraySerializer     http://stackoverflow.com/questions/22947721/rails-active-model-serializer-with-pagination
+
 class PaginationSerializer < ActiveModel::ArraySerializer
   def initialize(object, options={})
     meta_key = options[:meta_key] || :meta
