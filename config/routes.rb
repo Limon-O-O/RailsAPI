@@ -16,4 +16,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      scope path: '/user/:user_id' do
+        resources :microposts, only: [:index]
+      end
+    end
+  end
+
 end

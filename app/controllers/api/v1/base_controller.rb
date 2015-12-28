@@ -33,4 +33,13 @@ class Api::V1::BaseController < ApplicationController
     end
   end
 
+  def paginate(resource)
+    resource = resource.page(params[:page] || 1)
+    if params[:per_page]
+      resource = resource.per(params[:per_page])
+    end
+
+    return resource
+  end
+
 end
