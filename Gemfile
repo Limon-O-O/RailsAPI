@@ -19,6 +19,8 @@ gem 'pundit'
 
 gem 'kaminari'
 
+gem 'redis-throttle', git: 'git://github.com/andreareginato/redis-throttle.git'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

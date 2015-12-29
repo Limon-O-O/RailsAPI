@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/andreareginato/redis-throttle.git
+  revision: 98cf0bf5f2c3955408f2b5667c7b6ddcd459b6d4
+  specs:
+    redis-throttle (0.0.1)
+      activesupport
+      hiredis
+      rack
+      rack-throttle
+      redis
+      redis-namespace
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -111,6 +123,8 @@ GEM
       json
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-throttle (0.4.0)
+      rack (>= 1.0.0)
     rails (5.0.0.beta1)
       actioncable (= 5.0.0.beta1)
       actionmailer (= 5.0.0.beta1)
@@ -139,6 +153,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     redis (3.2.2)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     spring (1.6.0)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -169,6 +185,7 @@ DEPENDENCIES
   puma
   pundit
   rails (>= 5.0.0.beta1, < 5.1)
+  redis-throttle!
   spring
   sqlite3
   tzinfo-data
